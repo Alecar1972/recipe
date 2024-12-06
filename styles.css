@@ -114,6 +114,7 @@ header {
     background-color: var(--white);
     margin: 0 auto;
     width: 80%;
+    padding-top: 10rem;
 }
 menu {
     display: flex;
@@ -130,40 +131,22 @@ header p {
     line-height: 1.5em;
     padding: 1em;
 }
-.details {
+.details, .container {
     background-color: var(--white);
     margin: 0 auto;
     width: 80%;
     padding: 1em;
 }
-.details h2 {
+.details h2, .ingredients h2, .directions h2 {
     text-align: center;
 }
 .details dl {
     display: flex;
     gap: 1em;
 }
-.ingredients {
-    background-color: var(--white);
-    margin: 0 auto;
-    width: 80%;
-    padding: 1em;
-}
-.ingredients h2 {
-    text-align: center;
-}
 .ingredients li {
     list-style: square;
     margin: .5em;
-}
-.directions {
-    background-color: var(--white);
-    margin: 0 auto;
-    width: 80%;
-    padding: 1em;
-}
-.directions h2 {
-    text-align: center;
 }
 .directions li {
     margin: .5em;
@@ -229,16 +212,31 @@ footer h2, footer h3 {
 }
 .foot img {
     grid-area: img;
+    max-width: 100%;
 }
 .foot small {
     grid-area: copy;
 }
 .foot cite {
-    grid-area: author
+    grid-area: author;
 }
-
-
-/* nav {
+form {
+    width: 300px;
+    border: 2px solid var(--orange);
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    position: absolute;
+    top: 5rem;
+    left: 25%;
+}
+form svg, form button {
+    fill: var(--orange);
+    background-color: var(--orange);
+    stroke: var(--white);
+    border: none;
+}
+/*-------------------- Provided CSS for the nav --------------------*/
+nav {
     grid-area: nav;
     min-width: 414px;
     background-color: #ffffff;
@@ -295,4 +293,88 @@ nav h2 {
     visibility: hidden;
     height: 1px;
     width: 1px;
-} */
+}
+/*-------------------- MEDIA QUERY (medium) --------------------------------*/
+@media (min-width: 750px) {
+    nav {
+        position: fixed;
+    }
+    footer {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+    .foot img {
+        width: 200px;
+    }
+    .foot {
+        grid-column: 1 / 2;
+        grid-row: 1 / -1;
+    }
+    #social {
+        grid-column: 2 / -1;
+    }
+    aside {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content auto auto
+    }
+    aside h2 {
+        grid-column: 1 / -1;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        max-width: 80%;
+    }
+    .details dl {
+        justify-content: center;
+    }
+    menu  {
+        position: relative;
+        top: 70px;
+        backdrop-filter: blur(10px);
+    }
+}
+@media (min-width: 1280px) {
+    form {
+        top: 2rem;
+        left: 50%;
+    }
+    .header-graph {
+        display: grid;
+        grid-template-areas: 
+        "menu img paragraph-1"
+        "menu img paragraph-2";
+    }
+    .header-graph menu {
+        display: inline;
+        backdrop-filter: none;
+        grid-area: menu;
+    }
+    .header-graph img {
+        grid-area: img;
+    }
+    .details {
+        background-color: var(--black);
+        color: var(--teal);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .details h2 {
+        grid-column: 1 / -1;
+    }
+    .details dl {
+        display: flex;
+        flex-direction: column;
+    }
+    aside {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: min-content auto auto
+    }
+    aside h2 {
+        grid-column: 1 / -1;
+    }
+    .side-dish {
+        display: flex;
+        flex-direction: column;
+    }
+}
